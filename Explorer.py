@@ -25,7 +25,13 @@ if len(sys.argv) >= 2:
 with env.begin() as txn:
     with txn.cursor(child_db) as curs:
         for a in curs:
-            print(a)
+            for b in a:
+                print(b.encode("hex"))
+            #print(unicode(a[0]).decode('utf-8'))
+            q = raw_input("Continue?")
+            if q == "q":
+                quit()
+            print("")
         #if not curs.set_key(keyy):
             #print("No values found for '"+keyy+"'")
         #else:
